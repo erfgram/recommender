@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load main_extras %}
+<table>
+    <tr>
+      <th>Name</th>
+      {% comment %} <th>Sex</th> {% endcomment %}
+      <th>City</th>
+      <th>Month</th>
+      <th>Day</th>
+    </tr>
+    
+    <tr>
+      <td {% if object.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}> {% if object.sex %}Ms.{% else %}Mr.{% endif %} {{ object.name }}</td>
+      {% comment %} <td {% if object.sex %}class = "bg-danger"{% else %}class = "bg-primary"{% endif %}> {% if i.first.sex %}Female{% else %}Male{% endif %}</td> {% endcomment %}
+      <td>{{ object.city }}</td>
+      <td>{{ object.month|formatmonth }}</td>
+      <td>{{ object.day }}</td>
+    </tr>    
+    
+</table>
+<table>
+    <tr>
+      <th>Index</th>
+      <th>User</th>
+      <th>Distance</th>
+    </tr>
+    {% for distance in distances %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            {% if distance.first.name == object.name %}
+                <td {% if distance.second.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.second.id %}">{% if distance.second.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.second.name }}</a></td>
+            {% elif distance.second.name == object.name %}
+                <td {% if distance.first.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.first.id %}">{% if distance.first.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.first.name }}</a></td>
+            {% endif %}
+                <td {% if distance.distance < 300 %}class = "bg-success"{% endif %}>{{ distance.distance }}</td>
+        </tr>   
+    {% endfor %}
+    
+</table>
+{% endblock content %}
