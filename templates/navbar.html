@@ -1,0 +1,19 @@
+{% block content %}
+{% load static %}
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+  <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+    <a href="{% url 'users' %}" class="d-flex" >
+        <img src="{% static 'img/favicon.svg' %}" alt="" class="avatar avatar-s">
+        <h5 class="logo mt-2 mx-2 mb-0">Recommender</h5>
+    </a>
+    <ul class="navbar-nav flex-row align-items-center ms-auto">
+      <!-- Place this tag where you want the button to render. -->
+      <li class="nav-item">
+        <span>
+            <a href="{% url 'users' %}">Home</a>
+        </span>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock content %}

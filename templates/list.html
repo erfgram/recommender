@@ -1,73 +1,108 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load main_extras %}
-<h3>Users</h3>
-<table>
-    <tr>
-      <th>Index</th>
-      <th>Name</th>
-      {% comment %} <th>Sex</th> {% endcomment %}
-      <th>City</th>
-      <th>Month</th>
-      <th>Day</th>
-      <th>Recommend</th>
-    </tr>
-    
-    {% for object in objects %}
+{% load static %}
+<div class="card">
+  <h5 class="card-header">Users</h5>
+  <div class="card-body">
+  <div class="table-responsive text-nowrap">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+            <th>Index</th>
+            <th>Name</th>
+            {% comment %} <th>Sex</th> {% endcomment %}
+            <th>City</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Recommend</th>
+        </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+        {% for object in objects %}
         <tr>
           <td>{{ object.id }}</td>
-          <td {% if object.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' object.id %}"> {% if object.sex %}Ms.{% else %}Mr.{% endif %} {{ object.name }}</a></td>
-          {% comment %} <td {% if object.sex %}class = "bg-danger"{% else %}class = "bg-primary"{% endif %}> {% if object.sex %}Female 🚺{% else %}Male 🚹{% endif %}</td> {% endcomment %}
+          <td {% if object.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}>
+            <a href="{% url 'user' object.id %}">
+                {% if object.sex %}
+                    <img src="{% static 'img/avatars/female.jpg' %}" alt="Avatar" class="avatar avatar-s rounded-circle mx-2">Ms.
+                {% else %}
+                    <img src="{% static 'img/avatars/male.jpg' %}" alt="Avatar" class="avatar avatar-s rounded-circle mx-2">Mr.
+                {% endif %}
+                    {{ object.name }}
+            </a>
+          </td>
           <td>{{ object.city }}</td>
           <td>{{ object.month|formatmonth }}</td>
           <td>{{ object.day }}</td>
-          <td><a href="{% url 'user' object.id %}">Recommend</a></td>
+          <td {% if object.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}>
+            <a href="{% url 'user' object.id %}">Recommend</a>
+          </td>
         </tr>    
-    {% endfor %}
-    
-</table>
-<div class="row">
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+<div class="row mt-4">
     <div class="col">
-        <h3>Top 50 Matches</h3>
-        <table>
-            <tr>
-              <th>Index</th>
-              <th>First</th>
-              <th>Second</th>
-              <th>Distance</th>
-            </tr>
-
-            {% for distance in distances %}
+        <div class="card">
+          <h5 class="card-header">Top 50 Matches</h5>
+          <div class="card-body">
+          <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td {% if distance.first.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.first.id %}">{% if distance.first.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.first.name }}</a></td>
-                    <td {% if distance.second.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.second.id %}">{% if distance.second.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.second.name }}</a></td>
-                    <td class = "bg-success">{{ distance.distance }}</td>
-                </tr>   
-            {% endfor %}
-            
-        </table>
+                    <th>Index</th>
+                    <th>First</th>
+                    <th>Second</th>
+                    <th>Distance</th>
+                </tr>
+              </thead>
+              <tbody class="table-border-bottom-0">
+                {% for distance in distances %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td {% if distance.first.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.first.id %}">{% if distance.first.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.first.name }}</a></td>
+                        <td {% if distance.second.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.second.id %}">{% if distance.second.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.second.name }}</a></td>
+                        <td class = "text-white bg-success">{{ distance.distance|floatformat:2 }}</td>
+                    </tr>   
+                {% endfor %}
+              </tbody>
+            </table>
+          </div></div>
+        </div>
     </div>
     <div class="col">
-        <h3>Worst 50 Matches</h3>
-        <table>
-            <tr>
-              <th>Index</th>
-              <th>First</th>
-              <th>Second</th>
-              <th>Distance</th>
-            </tr>
-
-            {% for distance in hightdistances %}
+        <div class="card">
+          <h5 class="card-header">Worst 50 Matches</h5>
+          
+            <div class="card-body">
+          <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td {% if distance.first.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.first.id %}">{% if distance.first.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.first.name }}</a></td>
-                    <td {% if distance.second.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.second.id %}">{% if distance.second.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.second.name }}</a></td>
-                    <td class = "bg-danger">{{ distance.distance }}</td>
-                </tr>   
-            {% endfor %}
-            
-        </table>
+                    <th>Index</th>
+                    <th>First</th>
+                    <th>Second</th>
+                    <th>Distance</th>
+                </tr>
+              </thead>
+              <tbody class="table-border-bottom-0">
+                {% for distance in hightdistances %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td {% if distance.first.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.first.id %}">{% if distance.first.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.first.name }}</a></td>
+                        <td {% if distance.second.sex %}class = "bg-female"{% else %}class = "bg-male"{% endif %}><a href="{% url 'user' distance.second.id %}">{% if distance.second.sex %}Ms.{% else %}Mr.{% endif %} {{ distance.second.name }}</a></td>
+                        <td class = "text-white bg-danger">{{ distance.distance|floatformat:2 }}</td>
+                    </tr>   
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
     </div>
 </div>
 {% endblock content %}
