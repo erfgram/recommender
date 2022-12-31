@@ -58,4 +58,20 @@
 .bg-male a {
   color: #58a4fa;
 }
+
+.index {
+  width: 10px !important;
+}
+
+.month {
+  width: 160px !important;
+}
+
+.day {
+  width: 80px !important;
+}
+
+.month {
+  width: 160px !important;
+}
 /*# sourceMappingURL=costum.css.map */

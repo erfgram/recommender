@@ -4,7 +4,7 @@ from .models import User, Distance
 # Register your models here
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id','name']
+    list_display = ['id','name','city']
     search_fields = ['name']
     list_display_links = list_display
 

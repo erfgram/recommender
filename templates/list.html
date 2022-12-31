@@ -3,18 +3,93 @@
 {% load main_extras %}
 {% load static %}
 <div class="card">
+  <h5 class="card-header">Statistics</h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        🚹 Male: {{ objects|filtersex:0 }}
+        <br>
+        🚺 Female: {{ objects|filtersex:1 }}
+      </div>
+      <div class="col">
+        🟢 Farvardin: {{ objects|filtermonth:1 }}
+        <br>
+        🟢 Ordibehesht: {{ objects|filtermonth:2 }}
+        <br>
+        🟢 Khordad: {{ objects|filtermonth:3 }}
+      </div>
+      <div class="col">
+        🔴 Tir: {{ objects|filtermonth:4 }}
+        <br>
+        🔴 Mordad: {{ objects|filtermonth:5 }}
+        <br>
+        🔴 Shahrivar: {{ objects|filtermonth:6 }}
+      </div>
+      <div class="col">
+        🟡 Mehr: {{ objects|filtermonth:7 }}
+        <br>
+        🟡 Aban: {{ objects|filtermonth:8 }}
+        <br>
+        🟡 Azar:: {{ objects|filtermonth:9 }}
+      </div>
+      <div class="col">
+        🔵 Dey:{{ objects|filtermonth:10 }}
+        <br>
+        🔵 Bahman: {{ objects|filtermonth:11 }}
+        <br>
+        🔵 Esfand: {{ objects|filtermonth:12 }}
+      </div>
+    </div>
+    <br>
+    <span>🏡 City</span>
+    <div class="row">
+      <div class="col">
+        300: {{ objects|filtercity:300 }}
+        <br>
+        900: {{ objects|filtercity:900 }}
+        <br>
+        1700: {{ objects|filtercity:1700 }}
+      </div>
+      <div class="col">
+        299: {{ objects|filtercity:299 }}
+        <br>
+        350: {{ objects|filtercity:350 }}
+        <br>
+        430: {{ objects|filtercity:430 }}
+      </div>
+      <div class="col">
+        500: {{ objects|filtercity:500 }}
+        <br>
+        600: {{ objects|filtercity:600 }}
+        <br>
+        800: {{ objects|filtercity:800 }}
+      </div>
+      <div class="col">
+        1125: {{ objects|filtercity:1125 }}
+        <br>
+        1200: {{ objects|filtercity:1200 }}
+        <br>
+        1325: {{ objects|filtercity:1325 }}
+      </div>
+      <div class="col">
+        1500: {{ objects|filtercity:1500 }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mt-4">
   <h5 class="card-header">Users</h5>
   <div class="card-body">
     <div class="table-responsive text-nowrap">
       <table class="table table-bordered table-hover">
         <thead class="table-light">
           <tr>
-            <th>Index</th>
+            <th class="index">#</th>
             <th>Name</th>
-            <th>City</th>
-            <th>Month</th>
-            <th>Day</th>
-            <th>Recommend</th>
+            <th class="month">City</th>
+            <th class="month">Month</th>
+            <th class="day">Day</th>
+            <th class="month">Recommend</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
@@ -53,11 +128,11 @@
               <table class="table table-bordered table-hover">
                 <thead class="table-light">
                   <tr>
-                    <th>Index</th>
+                    <th class="index">#</th>
                     <th>First</th>
                     <th>Second</th>
                     <th>Distance</th>
-                    <th>Distance (%)</th>
+                    <th class="day">Distance (%)</th>
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -86,11 +161,11 @@
               <table class="table table-bordered table-hover">
                 <thead class="table-light">
                   <tr>
-                    <th>Index</th>
+                    <th class="index">#</th>
                     <th>First</th>
                     <th>Second</th>
                     <th>Distance</th>
-                    <th>Distance (%)</th>
+                    <th class="day">Distance (%)</th>
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
