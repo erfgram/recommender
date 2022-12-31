@@ -22,3 +22,9 @@ month = {
 def formatmonth(month_num, *args, **kwargs):
     formated = month[str(month_num)]
     return formated
+    
+@register.filter
+def percentage(distance, *args, **kwargs):
+    max = 1423.26
+    percentage = abs(round(((distance / max) * 100) - 100,2)) 
+    return percentage

@@ -42,6 +42,7 @@
             <th>Index</th>
             <th>User</th>
             <th>Distance</th>
+            <th>Distance (%)</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
@@ -71,8 +72,15 @@
                       </a>
                     </td>
                 {% endif %}
-                   <td {% if distance.distance < 300 %}class = "text-white bg-success"{% endif %}>
-                    {{ distance.distance|floatformat:2 }}
+                  <td class = "">{{ distance.distance|floatformat:2 }}</td>
+                  <td {% if distance.distance|percentage > 60 %}
+                        class = "text-white bg-success"
+                      {% elif distance.distance|percentage < 60 and distance.distance|percentage > 30 %}
+                        class = "text-white bg-warning"
+                      {% elif distance.distance|percentage < 30 %}
+                        class = "text-white bg-danger"
+                      {% endif %}>
+                    % {{ distance.distance|percentage }}
                   </td>
             </tr>   
           {% endfor %}
