@@ -145,14 +145,13 @@ if DEBUG == True:
     MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'media').replace('\\','/')
 else:
     STATIC_URL = '/static/'
-    STATIC_ROOT = '/home/erfgrami/recommend.erfgram.xyz/static'
+    STATIC_ROOT = '/home/erfgrami/public_html/recommend/static'
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
     ]
 
     MEDIA_URL = '/media/'
     MEDIA_ROOT =  '/home/erfgrami/recommend.erfgram.xyz/media'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from .models import User, Distance
 
+
 # Create your views here.
 def home_view(request,*args,**lwargs):
     users = User.objects.all()

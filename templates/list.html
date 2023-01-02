@@ -2,82 +2,96 @@
 {% block content %}
 {% load main_extras %}
 {% load static %}
-<div class="card">
-  <h5 class="card-header">Statistics</h5>
-  <div class="card-body">
-    <div class="row">
-      <div class="col">
-        🚹 Male: {{ objects|filtersex:0 }}
+<div class="row">
+  <div class="col-xl-8 col-sm-12 order-0 mb-4">
+    <div class="card">
+      <h5 class="card-header">Hierarchical Clustering</h5>
+      <img class="card-img-bottom" src="{% static 'img/figure.png' %}" alt="">
+  </div>
+  </div>
+  <div class="col-xl-4 col-sm-12 order-1">
+    <div class="card">
+      <h5 class="card-header">Statistics</h5>
+      <div class="card-body">
+        <span>Gender</span>
+        <div class="row mb-4">
+          <div class="col">
+            🚹 Male: {{ objects|filtersex:0 }}
+            <br>
+            🚺 Female: {{ objects|filtersex:1 }}
+          </div>
+        </div>
+        <span>📅 Month</span>
+        <div class="row">
+          <div class="col-6">
+            🟢 Farvardin: {{ objects|filtermonth:1 }}
+            <br>
+            🟢 Ordibehesht: {{ objects|filtermonth:2 }}
+            <br>
+            🟢 Khordad: {{ objects|filtermonth:3 }}
+          </div>
+          <div class="col-6 mb-2">
+            🔴 Tir: {{ objects|filtermonth:4 }}
+            <br>
+            🔴 Mordad: {{ objects|filtermonth:5 }}
+            <br>
+            🔴 Shahrivar: {{ objects|filtermonth:6 }}
+          </div>
+          <div class="col-6">
+            🟡 Mehr: {{ objects|filtermonth:7 }}
+            <br>
+            🟡 Aban: {{ objects|filtermonth:8 }}
+            <br>
+            🟡 Azar:: {{ objects|filtermonth:9 }}
+          </div>
+          <div class="col-6">
+            🔵 Dey:{{ objects|filtermonth:10 }}
+            <br>
+            🔵 Bahman: {{ objects|filtermonth:11 }}
+            <br>
+            🔵 Esfand: {{ objects|filtermonth:12 }}
+          </div>
+        </div>
         <br>
-        🚺 Female: {{ objects|filtersex:1 }}
-      </div>
-      <div class="col">
-        🟢 Farvardin: {{ objects|filtermonth:1 }}
-        <br>
-        🟢 Ordibehesht: {{ objects|filtermonth:2 }}
-        <br>
-        🟢 Khordad: {{ objects|filtermonth:3 }}
-      </div>
-      <div class="col">
-        🔴 Tir: {{ objects|filtermonth:4 }}
-        <br>
-        🔴 Mordad: {{ objects|filtermonth:5 }}
-        <br>
-        🔴 Shahrivar: {{ objects|filtermonth:6 }}
-      </div>
-      <div class="col">
-        🟡 Mehr: {{ objects|filtermonth:7 }}
-        <br>
-        🟡 Aban: {{ objects|filtermonth:8 }}
-        <br>
-        🟡 Azar:: {{ objects|filtermonth:9 }}
-      </div>
-      <div class="col">
-        🔵 Dey:{{ objects|filtermonth:10 }}
-        <br>
-        🔵 Bahman: {{ objects|filtermonth:11 }}
-        <br>
-        🔵 Esfand: {{ objects|filtermonth:12 }}
-      </div>
-    </div>
-    <br>
-    <span>🏡 City</span>
-    <div class="row">
-      <div class="col">
-        300: {{ objects|filtercity:300 }}
-        <br>
-        900: {{ objects|filtercity:900 }}
-        <br>
-        1700: {{ objects|filtercity:1700 }}
-      </div>
-      <div class="col">
-        299: {{ objects|filtercity:299 }}
-        <br>
-        350: {{ objects|filtercity:350 }}
-        <br>
-        430: {{ objects|filtercity:430 }}
-      </div>
-      <div class="col">
-        500: {{ objects|filtercity:500 }}
-        <br>
-        600: {{ objects|filtercity:600 }}
-        <br>
-        800: {{ objects|filtercity:800 }}
-      </div>
-      <div class="col">
-        1125: {{ objects|filtercity:1125 }}
-        <br>
-        1200: {{ objects|filtercity:1200 }}
-        <br>
-        1325: {{ objects|filtercity:1325 }}
-      </div>
-      <div class="col">
-        1500: {{ objects|filtercity:1500 }}
+        <span>🏡 City</span>
+        <div class="row">
+          <div class="col-6">
+            300: {{ objects|filtercity:300 }}
+            <br>
+            900: {{ objects|filtercity:900 }}
+            <br>
+            1700: {{ objects|filtercity:1700 }}
+          </div>
+          <div class="col-6">
+            299: {{ objects|filtercity:299 }}
+            <br>
+            350: {{ objects|filtercity:350 }}
+            <br>
+            430: {{ objects|filtercity:430 }}
+          </div>
+          <div class="col-6">
+            500: {{ objects|filtercity:500 }}
+            <br>
+            600: {{ objects|filtercity:600 }}
+            <br>
+            800: {{ objects|filtercity:800 }}
+          </div>
+          <div class="col-6">
+            1125: {{ objects|filtercity:1125 }}
+            <br>
+            1200: {{ objects|filtercity:1200 }}
+            <br>
+            1325: {{ objects|filtercity:1325 }}
+          </div>
+          <div class="col-6">
+            1500: {{ objects|filtercity:1500 }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="card mt-4">
+<div class="card mb-4">
   <h5 class="card-header">Users</h5>
   <div class="card-body">
     <div class="table-responsive text-nowrap">
@@ -119,7 +133,7 @@
     </div>
   </div>
 </div>
-<div class="row mt-4">
+<div class="row mb-4">
     <div class="col">
         <div class="card">
           <h5 class="card-header">Best 50 Matches</h5>
